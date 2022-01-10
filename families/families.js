@@ -26,26 +26,40 @@ async function displayFamilies() {
         const familyNameEl = document.createElement('h3');
         const bunniesEl = document.createElement('div');
         
+        console.log(families);
         // add the bunnies css class to the bunnies el, and family css class to the family el
-        familyNameEl.classList.add('family');
+        familyContainer.classList.add('families');
+        familyNameEl.classList.add('family-name');
         bunniesEl.classList.add('bunnies');
 
         // put the family name in the name element
         familyNameEl.textContent = family.name;
         // for each of this family's bunnies
+        for (let bunny of family.fuzzy_bunnies) {
+            // make an element with the css class 'bunny', and put the bunny's name in the text content
+            const bunnyEl = document.createElement('p');
+            bunnyEl.classList.add('bunny');
+            bunnyEl.textContent = bunny.name;
+            // add an event listener to the bunny el. On click, delete the bunny, then refetch and redisplay all families.
+            bunnyEl.addEventListener('click', async() => {
+                await deleteBunny(bunny.id);
+
+                await displayFamilies(families);
+            });
+            // append this bunnyEl to the bunniesEl
+            bunniesEl.append(bunnyEl);
+            
+            // append the bunniesEl and nameEl to the familyEl
+            familyContainer.append(familyNameEl, bunniesEl);
+        }
 
 
-        // make an element with the css class 'bunny', and put the bunny's name in the text content
+        // append the familyEl to the familiesEl
         
-        // add an event listener to the bunny el. On click, delete the bunny, then refetch and redisplay all families.
-
-
-        // append this bunnyEl to the bunniesEl
+        familiesEl.append(familyContainer);
     }
 
-    // append the bunniesEl and nameEl to the familyEl
 
-    // append the familyEl to the familiesEl
 }
 
 window.addEventListener('load', async() => {

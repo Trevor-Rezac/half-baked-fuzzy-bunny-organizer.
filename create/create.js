@@ -16,7 +16,7 @@ form.addEventListener('submit', async e => {
     const bunny = data.get('bunny-name');
     const family = data.get('family-id');
     // console.log(family);
-    
+
     // use createBunny to create a bunny with this name and family id
     await createBunny({
         name: bunny,
@@ -45,6 +45,7 @@ window.addEventListener('load', async() => {
         // and append the option to the select
         familyDropdown.append(familyEl);
     }
+    
 });
 
 
