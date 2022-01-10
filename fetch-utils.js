@@ -12,7 +12,6 @@ export async function getFamilies() {
     const response = await client
         .from('loving_families')
         .select('*, fuzzy_bunnies (*)');
-    console.log(response);
 
     return checkError(response);    
 }
@@ -34,7 +33,7 @@ export async function createBunny(bunny) {
         .from('fuzzy_bunnies')
         .insert([{
             name: bunny.name,
-            family_id: bunny.family,
+            family_id: bunny.family_id,
         }]);
 
     return checkError(response);    
