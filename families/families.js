@@ -25,10 +25,10 @@ async function displayFamilies() {
         const familyContainer = document.createElement('div');
         const familyNameEl = document.createElement('h3');
         const bunniesEl = document.createElement('div');
+        // console.log(families);
         
-        console.log(families);
         // add the bunnies css class to the bunnies el, and family css class to the family el
-        familyContainer.classList.add('families');
+        familyContainer.classList.add('family');
         familyNameEl.classList.add('family-name');
         bunniesEl.classList.add('bunnies');
 
@@ -44,26 +44,20 @@ async function displayFamilies() {
             bunnyEl.addEventListener('click', async() => {
                 await deleteBunny(bunny.id);
 
-                await displayFamilies(families);
+                await displayFamilies();
             });
             // append this bunnyEl to the bunniesEl
             bunniesEl.append(bunnyEl);
             
             // append the bunniesEl and nameEl to the familyEl
             familyContainer.append(familyNameEl, bunniesEl);
+
+            // append the familyEl to the familiesEl
+            familiesEl.append(familyContainer);
         }
-
-
-        // append the familyEl to the familiesEl
-        
-        familiesEl.append(familyContainer);
     }
-
-
 }
 
 window.addEventListener('load', async() => {
-    const families = await getFamilies();
-
-    displayFamilies(families);
+    await displayFamilies();
 });
