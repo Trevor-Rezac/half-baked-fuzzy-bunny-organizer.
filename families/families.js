@@ -47,13 +47,13 @@ async function displayFamilies() {
             });
             // append this bunnyEl to the bunniesEl
             bunniesEl.append(bunnyEl);
-            
-            // append the bunniesEl and nameEl to the familyEl
-            familyContainer.append(familyNameEl, bunniesEl);
-
-            // append the familyEl to the familiesEl
-            familiesEl.append(familyContainer);
         }
+
+        // append the bunniesEl and nameEl to the familyEl
+        familyContainer.append(familyNameEl, bunniesEl);
+
+        // append the familyEl to the familiesEl
+        familiesEl.append(familyContainer);
     }
 }
 
