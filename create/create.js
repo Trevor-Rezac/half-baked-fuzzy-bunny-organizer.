@@ -24,6 +24,8 @@ form.addEventListener('submit', async e => {
     });
 
     form.reset();
+
+    window.location.href = '../families';
 });
 
 window.addEventListener('load', async() => {
@@ -45,7 +47,7 @@ window.addEventListener('load', async() => {
         // and append the option to the select
         familyDropdown.append(familyEl);
     }
-    
+
 });
 
 
